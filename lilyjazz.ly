@@ -1,4 +1,4 @@
-\version "2.16.0"
+\version "2.20.0"
 
 % preliminary LilyJAZZ version for testing purposes
 
@@ -10,7 +10,7 @@
 
 % MAPPING ALIST: GLYPH NAME TO UNICODE CHAR NUMBER =====================
 #(define jazz-map '(
-    ("noteheads.s0jazz" . #xe191) 
+    ("noteheads.s0jazz" . #xe191)
     ("noteheads.s1jazz" . #xe192)
     ("noteheads.s2jazz" . #xe193)
     ("noteheads.s0slashjazz" . #xe19c)
@@ -92,7 +92,7 @@
     ("pjazz" . #x0070)
     ("rjazz" . #x0072)
     ("sjazz" . #x0073)
-    ("zjazz" . #x007a)))                            
+    ("zjazz" . #x007a)))
 
 #(define jazz-alteration-glyph-name-alist
   '((0 . "accidentals.naturaljazz")
@@ -125,7 +125,7 @@
 
 #(define (jazz-clef grob)
   "jazz clef stencil"
-  (let* ((glyphname (string-append (ly:grob-property grob 'glyph-name) "jazz")))    
+  (let* ((glyphname (string-append (ly:grob-property grob 'glyph-name) "jazz")))
     (if (pair? (assoc glyphname jazz-map))
         (grob-interpret-markup grob (markup #:jazzglyph glyphname))
         (ly:clef::print grob))))
@@ -140,7 +140,7 @@
   (let* ((altlist (ly:grob-property grob 'alteration-alist))
     (c0pos (ly:grob-property grob 'c0-position))
     (keysig-stencil '()))
-    (for-each (lambda (alt) 
+    (for-each (lambda (alt)
          (let* ((alteration (if (grob::has-interface grob 'key-cancellation-interface) 0 (cdr alt)))
          (glyphname (assoc-get alteration jazz-alteration-glyph-name-alist ""))
          (padding (cond
@@ -161,8 +161,8 @@
 #(define (jazz-timesig grob)
   (let* ((style (ly:grob-property grob 'style))
          (fraction (ly:grob-property grob 'fraction))
-         (glyphname (if (equal? style 'C) 
-                (cond 
+         (glyphname (if (equal? style 'C)
+                (cond
                    ((equal? fraction '(4 . 4)) "timesig.C44jazz")
                    ((equal? fraction '(2 . 2)) "timesig.C22jazz")
                    (else "")) "")))
@@ -180,10 +180,10 @@
   (let* ((log (ly:grob-property grob 'duration-log)))
      (set! (ly:grob-property grob 'stem-attachment) '(1.0 . 0.35))
      (grob-interpret-markup grob
-      (cond 
+      (cond
          ((<= log 0) (markup #:jazzglyph "noteheads.s0jazz"))
-         ((<= log 1) (markup #:jazzglyph "noteheads.s1jazz"))  
-	 (else  (markup #:jazzglyph "noteheads.s2jazz"))))))
+         ((<= log 1) (markup #:jazzglyph "noteheads.s1jazz"))
+   (else  (markup #:jazzglyph "noteheads.s2jazz"))))))
 
 %***********************************************************************
 % FLAGS
@@ -200,7 +200,7 @@
           (flag-pos (cons (* stem-width -1) 0))
           (stroke-style (ly:grob-property grob 'stroke-style))
           (stroke-stencil (if (equal? stroke-style "grace")
-                              (if (equal? dir UP) 
+                              (if (equal? dir UP)
                                   (make-line-stencil 0.15 -0.5 -1.6 0.75 -0.6)
                                   (make-line-stencil 0.15 -0.4 1.6 0.85 0.6))
      ;                             (grob-interpret-markup grob (markup #:jazzglyph "flags.ugracejazz"))
@@ -221,7 +221,7 @@
          (if (>= dot-count 2) (markup #:translate '(0.25 . 0) #:jazzglyph "dots.dot") (markup #:null))
          (if (>= dot-count 3) (markup #:translate '(0.25 . 0) #:jazzglyph "dots.dot") (markup #:null))
          (if (>= dot-count 4) (markup #:translate '(0.25 . 0) #:jazzglyph "dots.dot") (markup #:null))
-         (if (>= dot-count 5) (markup #:translate '(0.25 . 0) #:jazzglyph "dots.dot") (markup #:null))))))         
+         (if (>= dot-count 5) (markup #:translate '(0.25 . 0) #:jazzglyph "dots.dot") (markup #:null))))))
 
 
 %***********************************************************************
@@ -242,26 +242,26 @@
    "stencil: jazz cautionary accidentals in front of notes"
   (let* ((alt (ly:grob-property grob 'alteration)))
     (grob-interpret-markup grob
-      (case alt 
+      (case alt
          ((1) (markup #:concat (
-                     #:translate '(0 . -0.05) #:jazzglyph "accidentals.leftparenjazz" 
-                     #:jazzglyph "accidentals.doublesharpjaz"                         
+                     #:translate '(0 . -0.05) #:jazzglyph "accidentals.leftparenjazz"
+                     #:jazzglyph "accidentals.doublesharpjaz"
                      #:translate '(0 . 0.05) #:jazzglyph "accidentals.rightparenjaz" )))
          ((1/2) (markup #:concat (
-                     #:translate '(0 . -0.1) #:jazzglyph "accidentals.leftparenjazz" 
-                     #:jazzglyph "accidentals.sharpjazz"                       
+                     #:translate '(0 . -0.1) #:jazzglyph "accidentals.leftparenjazz"
+                     #:jazzglyph "accidentals.sharpjazz"
                      #:translate '(0 . 0.3) #:jazzglyph "accidentals.rightparenjaz" )))
          ((0) (markup #:concat (
-                     #:translate '(0.1 . 0) #:rotate 5 #:jazzglyph "accidentals.leftparenjazz" 
-                     #:jazzglyph "accidentals.naturaljazz"                          
+                     #:translate '(0.1 . 0) #:rotate 5 #:jazzglyph "accidentals.leftparenjazz"
+                     #:jazzglyph "accidentals.naturaljazz"
                      #:translate '(0.05 . 0.3) #:rotate 5 #:jazzglyph "accidentals.rightparenjaz" )))
          ((-1/2) (markup #:concat (
-                     #:translate '(-0.15 . 0.3) #:jazzglyph "accidentals.leftparenjazz" 
-                     #:jazzglyph "accidentals.flatjazz"                                   
-                     #:translate '(0 . 0.2) #:jazzglyph "accidentals.rightparenjaz" )))   ;   
+                     #:translate '(-0.15 . 0.3) #:jazzglyph "accidentals.leftparenjazz"
+                     #:jazzglyph "accidentals.flatjazz"
+                     #:translate '(0 . 0.2) #:jazzglyph "accidentals.rightparenjaz" )))   ;
          ((-1) (markup #:concat (
-                     #:translate '(-0.15 . 0.5) #:jazzglyph "accidentals.leftparenjazz" 
-                     #:jazzglyph "accidentals.flatflatjazz"                                  
+                     #:translate '(-0.15 . 0.5) #:jazzglyph "accidentals.leftparenjazz"
+                     #:jazzglyph "accidentals.flatflatjazz"
                      #:translate '(-0.1 . 0.4) #:jazzglyph "accidentals.rightparenjaz" )))))))
 
 
@@ -304,7 +304,7 @@
            (var (ly:grob-property grob 'script-stencil))
            (glyphname (if (= dir DOWN) (car (cdr var)) (cdr (cdr var))))
            (jazzchar (assoc-get (string-append "scripts." glyphname "jazz") jazz-map 0 )))
-     (if (> jazzchar 0) 
+     (if (> jazzchar 0)
          (grob-interpret-markup grob (markup #:jazzchar jazzchar))
          (ly:script-interface::print grob))))
 
@@ -324,21 +324,21 @@ fermataMarkup =
 makeUnpurePureContainer =
         #(ly:make-unpure-pure-container
        ly:grob::stencil-height
-       (lambda (grob start end) (ly:grob::stencil-height grob)))  
+       (lambda (grob start end) (ly:grob::stencil-height grob)))
 
 
 jazzOn = {
   \override Staff.Clef #'stencil = #jazz-clef
   \override Score.BarNumber #'stencil = ##f
-  
+
   \override Staff.KeySignature #'stencil = #jazz-keysig
   \override Staff.KeyCancellation #'stencil = #jazz-keysig
 
   \override Staff.TimeSignature #'stencil = #jazz-timesig
-  
-  \override Staff.NoteHead #'stencil = #jazz-notehead  
+
+  \override Staff.NoteHead #'stencil = #jazz-notehead
   \override Staff.NoteHead #'Y-extent = \makeUnpurePureContainer
-  
+
   \override Staff.Stem #'thickness = #2
   \override Staff.Beam #'beam-thickness = #0.55
   \override Staff.Flag #'stencil = #jazz-flag
@@ -347,38 +347,38 @@ jazzOn = {
   \override Staff.Dots #'stencil = #jazz-dots
   \override Staff.Accidental #'stencil = #jazz-accidental
   \override Staff.Accidental #'Y-extent = \makeUnpurePureContainer
-  
+
   \override Staff.AccidentalCautionary #'stencil = #jazz-accidental-cautionary
   \override Staff.AccidentalCautionary #'Y-extent = \makeUnpurePureContainer
 
   \override Staff.AccidentalSuggestion #'stencil = #jazz-accidental
   \override Staff.AccidentalSuggestion #'Y-extent = \makeUnpurePureContainer
-        
-  \override Staff.Script #'stencil = #jazz-articulation        
-  
+
+  \override Staff.Script #'stencil = #jazz-articulation
+
   \override Staff.Rest #'stencil = #jazz-rest
   \override Staff.Slur #'thickness = #2.5
   \override Staff.Tie #'thickness = #2.5
-  \override Staff.BarLine #'hair-thickness = #3  
+  \override Staff.BarLine #'hair-thickness = #3
   \override Score.BarNumber #'font-name = #"LilyJAZZ Text"
 
   \override Staff.TimeSignature #'font-name = #"LilyJAZZ"
   \override Staff.TimeSignature #'font-size = #5
-  
+
   \override Staff.DynamicText #'font-name = #"LilyJAZZ"
   \override Staff.DynamicText #'font-size = #6
 
   \override Score.RehearsalMark #'font-name = #"LilyJAZZ Text"
   \override Score.MetronomeMark #'font-name = #"LilyJAZZ Text"
 
-  \override Staff.TextScript #'font-name = #"LilyJAZZ Text"   
+  \override Staff.TextScript #'font-name = #"LilyJAZZ Text"
   \override Staff.TextScript #'font-size = #1
 
-  \override Staff.InstrumentName #'font-name = #"LilyJAZZ Text"   
-  
+  \override Staff.InstrumentName #'font-name = #"LilyJAZZ Text"
+
   \override Staff.TupletNumber #'font-name = "LilyJAZZ Text"
   \override Staff.TupletBracket #'thickness = #1.5
-  
+
   \override Score.VoltaBracket #'font-name = #"LilyJAZZ Text"
   \override Score.VoltaBracket #'font-size = #0
   \override Score.VoltaBracket #'thickness = #2
@@ -386,10 +386,10 @@ jazzOn = {
 
 jazzOff = {
   \revert Staff.Clef #'stencil
-  
+
   \revert Staff.KeySignature #'stencil
   \revert Staff.KeyCancellation #'stenci
-  
+
   \revert Staff.TimeSignature #'stencil
 
   \revert Staff.NoteHead #'stencil
@@ -401,9 +401,9 @@ jazzOff = {
   \revert Staff.Accidental #'stencil
   \revert Staff.AccidentalCautionary #'stencil
   \revert Staff.AccidentalSuggestion #'stencil
-  \revert Staff.Script #'stencil 
+  \revert Staff.Script #'stencil
   \revert Staff.Rest #'stencil
-  \revert Staff.Slur #'thickness 
+  \revert Staff.Slur #'thickness
   \revert Staff.Tie #'thickness
   \revert Staff.BarLine #'hair-thickness
   \revert Score.BarNumber #'font-name
@@ -413,9 +413,9 @@ jazzOff = {
   \revert Staff.DynamicText #'font-size
   \revert Score.RehearsalMark #'font-name
   \revert Score.MetronomeMark #'font-name
-  \revert Staff.TextScript #'font-name  
+  \revert Staff.TextScript #'font-name
   \revert Staff.TextScript #'font-size
-  \revert Staff.InstrumentName #'font-name   
+  \revert Staff.InstrumentName #'font-name
   \revert Staff.TupletNumber #'font-name
   \revert Staff.TupletBracket #'thickness
   \revert Score.VoltaBracket #'font-name
