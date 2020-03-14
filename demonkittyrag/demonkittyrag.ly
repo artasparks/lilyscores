@@ -73,17 +73,17 @@ theNotes = \relative c' {
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
+
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs | \break
   }
   \showStartRepeatBar
   \repeat volta 2 {
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
-    \rs \rs \rs \rs | \break
-
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
     \rs \rs \rs \rs |
 
     \rs \rs \rs \rs |
@@ -95,6 +95,11 @@ theNotes = \relative c' {
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
+
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs | \break
   } {
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
@@ -115,6 +120,7 @@ theChords = \chordmode {
   \jazzOn
   \key f \minor
   \repeat volta 4 {
+    d1:m | bes | a | d:m
     d1:m | bes | a | d:m
 
     d1:m | bes | a | d:m
