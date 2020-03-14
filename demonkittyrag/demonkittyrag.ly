@@ -2,8 +2,10 @@
 
 #(set-global-staff-size 18)
 
-\include "../jazzchords.ly"
+% \include "../jazzchords.ly"
 \include "../lilyjazz.ly"
+
+% \language "english"
 
 \paper {
   #(define fonts
@@ -26,8 +28,8 @@
                              (padding . 1))
 }
 
-title = #"Joshua Fit the Battle of Jericho"
-composer = #"Sydney Bechet"
+title = #"Demon Kitty Rag"
+composer = #"Katzenjammer"
 meter = #"(Med. Swing)"
 
 realBookTitle = \markup {
@@ -66,37 +68,62 @@ theNotes = \relative c' {
   \jazzOn
   \set Staff.midiInstrument = "flute"
   \key f \minor
-  \showStartRepeatBar \bar "[|:"
+  {
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+  }
+  \showStartRepeatBar
   \repeat volta 2 {
-    f8 e f g aes4 bes |
-    c8 aes r8 c8 ~ c2 |
-    bes8 g r bes ~ bes4 g8 bes |
-    aes8 f r c'8 ~ c2  | \break
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs | \break
 
-    f,8 e f g aes g aes bes |
-    c8 aes r8 c8 ~ c4 c8 des |
-    c8 c bes4 aes8 g4 f8 ~|
-    f2 r2 \bar ":|][|:" \break
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
 
-    f'2 c8 aes4 c8 ~ |
-    c2. c8 c8 |
-    f8 f4. c8 aes4 c8 ~ |
-    c2. c8 c8 | \break
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs | \break
 
-    f8 g f4 c8 aes4 c8 ~|
-    c2 aes4 aes8 bes |
-    c8 c bes4 aes8 g4 f8 ~ |
-    f4. r8 r2 \bar ":|]"
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+  } {
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \mark "D.C."
+    \bar
+    "|."
   }
 }
 
 theChords = \chordmode {
+  \jazzOn
+  \key f \minor
   \repeat volta 4 {
-    f1:m | f:m | c:7 | f:m |
-    f1:m | f:m | c:7 | f:m |
+    d1:m | bes | a | d:m
 
-    f1:m6 | c:7 | f:m6 | c:7 |
-    f1:m6 | c:7 | c:7 | f:m |
+    d1:m | bes | a | d:m
+    d1:m | bes | a | d:m
+    d1:m | bes | a | d:m
+    d1:m | bes | a | d:m
+
+    g | d:m | g | d:m |
+    g | d:m | f | a:7
   }
 }
 

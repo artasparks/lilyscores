@@ -467,3 +467,16 @@ inlineMMR = {
   \once \override MultiMeasureRestNumber.stencil = #white-under
   \once \override MultiMeasureRest.rotation = #'(2 0 0)
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Slash note heads to show rhythm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% From: http://lilypond.org/doc/v2.19/Documentation/snippets/rhythms#rhythms-rhythmic-slashes
+
+rs = {
+  \once \override Rest.stencil = #ly:percent-repeat-item-interface::beat-slash
+  \once \override Rest.thickness = #0.48
+  \once \override Rest.slope = #1.7
+  r4
+}
