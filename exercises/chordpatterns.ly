@@ -77,13 +77,23 @@ theNotes = \relative c' {
     \rs \rs \rs \rs |
     \rs \rs \rs \rs \bar "||"
     \rs \rs \rs \rs | \break
-  } {
+
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs \bar "||"
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs \bar "||"
+    \rs \rs \rs \rs | \break
+
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs \bar "||"
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs \bar "||"
+    \rs \rs \rs \rs |
+    \rs \rs \rs \rs \bar "||"
     \rs \rs \rs \rs |
     \rs \rs \rs \rs \bar "||"
     \rs \rs \rs \rs | \break
@@ -95,13 +105,20 @@ theChords = \chordmode {
   \key c \major {
     \mark "Var. 1 (I, V, VII, VI)"
     g1 | d:m | f | c:m |
-    aes | ees:m | fis | cis:m |
+    aes | ees:m | fis | des:m |
     a \break
-  } {
-    \mark "Var. 2 (I, V, VII, VI)"
-    g1 | d:m | f | c:m |
-    aes | ees:m | fis | cis:m |
+
+    % note: c# is cis
+
+    \mark "Var. 2 (I, V, III, IV)"
+    g1 | d:m | bes | c |
+    aes | ees:m | b | des |
     a \break
+
+    \mark "Var. 3 (I, IV)"
+    g1 | c:m | aes | des:m |
+    a  | d:m | bes | ees:m |
+    b \break
   }
 }
 
