@@ -47,7 +47,6 @@ realBookTitle = \markup {
           \fontsize #1 \lower #1 \concat { #composer " " }
         }
       }
-      s
     }
     \layout {
       \once \override Staff.Clef.stencil = ##f
@@ -90,17 +89,6 @@ theChords = \chordmode {
     \new Staff = vocals \theNotes
   >>
   \layout {
-    % make only the first clef visible
-
-    \override Score.Clef #'break-visibility = #'#(#f #f #f)
-
-    % make only the first time signature visible
-    \override Score.KeySignature #'break-visibility = #'#(#f #f #f)
-
-    % allow single-staff system bars
-    \override Score.SystemStartBar #'collapse-height = #1
-    \override LyricHyphen.thickness = #4
-    \override Score.VoltaBracket.font-name = #"LilyJAZZText"
   }
   \midi {
     \tempo 4 = 88

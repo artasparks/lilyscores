@@ -28,9 +28,9 @@
                              (padding . 1))
 }
 
-title = #"Demon Kitty Rag"
-composer = #"Katzenjammer"
-meter = #"(Med. Swing)"
+title = #"Chord Exercises"
+composer = #"Joshuar"
+meter = #"(Comfortable)"
 
 realBookTitle = \markup {
   \score {
@@ -66,70 +66,42 @@ realBookTitle = \markup {
 
 theNotes = \relative c' {
   \jazzOn
-  \set Staff.midiInstrument = "flute"
-  \key f \minor
+  \key c \major
   {
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs | \break
-  }
-  \showStartRepeatBar
-  \repeat volta 2 {
+    \rs \rs \rs \rs \bar "||"
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs | \break
-
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
+    \rs \rs \rs \rs \bar "||"
     \rs \rs \rs \rs | \break
   } {
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
-    \rs \rs \rs \rs |
-
-    \rs \rs \rs \rs |
+    \rs \rs \rs \rs \bar "||"
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
     \rs \rs \rs \rs |
-    \mark "D.C."
-    \bar
-    "|."
+    \rs \rs \rs \rs \bar "||"
+    \rs \rs \rs \rs | \break
   }
 }
 
 theChords = \chordmode {
   \jazzOn
-  \key f \minor
-  \repeat volta 4 {
-    d1:m | bes | a | d:m
-    d1:m | bes | a | d:m
-
-    d1:m | bes | a | d:m
-    d1:m | bes | a | d:m
-    d1:m | bes | a | d:m
-    d1:m | bes | a | d:m
-
-    g | d:m | g | d:m |
-    g | d:m | f | a:7
+  \key c \major {
+    \mark "Var. 1 (I, V, VII, VI)"
+    g1 | d:m | f | c:m |
+    aes | ees:m | fis | cis:m |
+    a \break
+  } {
+    \mark "Var. 2 (I, V, VII, VI)"
+    g1 | d:m | f | c:m |
+    aes | ees:m | fis | cis:m |
+    a \break
   }
 }
 
